@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,12 +7,14 @@ void main(){
   runApp(MyApp());
 }
 
+
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
+        canvasColor: Colors.cyan,
       ),
       home: MyHomePage(),
     );
@@ -18,19 +22,35 @@ class MyApp extends StatelessWidget{
 }
 
 class MyHomePage extends StatelessWidget{
+  static int min = 0;
+  static int max = 4;
+  static Random rnd = Random();
+  int r = min + rnd.nextInt(max - min);
+  List<String> images=[
+       'img/indir.png',
+       'img/indir.jpg' ,
+       'img/logo_bs.jpg' ,
+       'img/0.jpg' ,
+       'images.jpg',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Container(child: Image(image: AssetImage('img/j_platform.png'),),),
+      body:Padding(
+        padding: EdgeInsets.all(10),
+        child: ListView(children: <Widget>[
+          Container(
+          alignment: Alignment.center,
+          child: Image(
+          image: AssetImage('img/j_platform.png'),
+          ),
+         ),
           Card(
             child: Container(
               color: Colors.red,
               padding: EdgeInsets.all(20),
               width: double.infinity,
-              child: Text('Welcome to J-NOT',textAlign: TextAlign.center,style: TextStyle(fontSize: 30,color: Colors.white),),
+              child: Text('Welcome to J-NOT',textAlign: TextAlign.center,style: TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold, ),),
             ),
             elevation: 5,
           ),
@@ -41,6 +61,7 @@ class MyHomePage extends StatelessWidget{
               child: Column(children: <Widget>[
                   TextField(decoration: InputDecoration(
                     labelText: 'USERNAME',
+                    border: OutlineInputBorder(),
                     labelStyle: Theme.of(context).textTheme.title,
                     ),
                   ),
@@ -55,16 +76,20 @@ class MyHomePage extends StatelessWidget{
               child: Column(children: <Widget>[
               TextField(decoration: InputDecoration(
                 labelText: 'PASSWORD',
+                  border: OutlineInputBorder(),
                 labelStyle: Theme.of(context).textTheme.title,
               ),
               ),
           ],
           ),
-            ),),
+            ),
+          ),
           Card(
             child: Container(
-              child: Column(children: <Widget>[
-                FlatButton(
+              height: 50,
+              padding: EdgeInsets.all(0),
+              child:
+                RaisedButton(
                   color: Colors.red,
                   textColor: Colors.white,
                   disabledColor: Colors.deepPurple,
@@ -73,16 +98,22 @@ class MyHomePage extends StatelessWidget{
                   splashColor: Colors.blueAccent,
                   child:Text(
                     'LOGIN',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 30),
                   ),
                   onPressed: () {},
                 ),
-              ],
-              ),
             ),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+            decoration: BoxDecoration(),
+            alignment: Alignment.bottomCenter,
+            child: Image(image: AssetImage(images[r]),width: double.infinity,),
           )
         ],
       ),
+    )
     );
   }
 
