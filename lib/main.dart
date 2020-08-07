@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget{
             elevation: 5,
           ),
           Card(
-            elevation: 5,
+            elevation: 10,
             child: Container(
               color: Colors.white,
               child: Column(children: <Widget>[
