@@ -7,7 +7,7 @@ import 'screens/login_screen.dart';
 void main(){
   runApp(MyApp());
 }
-
+//yorum ile entegrasyomn kontrolü
 
 class MyApp extends StatelessWidget{
   @override
