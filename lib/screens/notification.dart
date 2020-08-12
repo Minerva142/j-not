@@ -9,50 +9,12 @@ class notification extends StatefulWidget {
 }
 
 class _notificationState extends State<notification> {
+  bool isSwitched;
+  List<bool> isSelected=[false];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Mydrawer(),
-      /*Drawer(
-        child: ListView(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 30,) ,
-              child: Column(
-                children: <Widget>[
-                  Text('USER',style: TextStyle(fontSize: 22,color: Colors.red),),
-                  Text('ERAY GÖNÜLAL',style: TextStyle(fontSize: 22,color: Colors.red),),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5,) ,
-            child:Text('Settings',style: TextStyle(fontSize: 22,color: Colors.red,fontWeight: FontWeight.bold),),
-            ),
-
-            Row(
-              children: [
-                Icon(
-                  Icons.settings,
-                  color: Colors.red,
-                  size: 22,
-                ),
-                Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10.0)),),
-                  child:
-                    FlatButton(
-                      child: Text(
-                        'LOG-OUT',
-                        style: TextStyle(color: Colors.white,fontSize: 22),textAlign: TextAlign.center,),
-                      color: Colors.red,
-                      onPressed: () {print('eray mal');},
-                    ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),*/
       appBar: AppBar(
         title: Text(
         'Request on board',
@@ -63,15 +25,32 @@ class _notificationState extends State<notification> {
           Expanded(
             child: ListView(
               children: <Widget>[
-                Container(
-                  child:Text('ilk notification'),
-                ),
+                ListTile(
+                  title: Text('ilk notification'),
+                  subtitle: Text('Status'),
+                  trailing: ToggleButtons(
+                    borderWidth: 2,
+                    borderColor: Colors.red,
+                    fillColor: Colors.red,
+                    color: Colors.red,
+                    children: <Widget>[
+                      Icon(Icons.cancel,color: Colors.black,size: 35,),
+                    ],
+                    onPressed: (int index) {
+                      setState(() {
+                        isSelected[index] = !isSelected[index];
+                      });
+                    },
+                    isSelected: isSelected,
+                  ),
+                  ),
               ],
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: RaisedButton(
+              elevation: 5,
               onPressed: (){
                 print('kaydedildi');
               },

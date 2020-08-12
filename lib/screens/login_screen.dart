@@ -91,7 +91,8 @@ class _LoginState extends State<Login> {
                   ),
                   ),
               ),
-            Container(
+            AnimatedContainer(
+              duration: Duration(),
               padding: EdgeInsets.symmetric(vertical: 25.0),
               width: double.infinity,
               child: RaisedButton(
