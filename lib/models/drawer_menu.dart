@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+
 class Mydrawer extends StatefulWidget {
   @override
   _MydrawerState createState() => _MydrawerState();
@@ -38,7 +39,10 @@ class _MydrawerState extends State<Mydrawer> {
             title: Text('LOG-OUT',style: TextStyle(color: Colors.red,fontSize: 25),),
             trailing: Icon(Icons.arrow_right,color: Colors.red,),
             onTap: () {
-              print('Eray mal');
+              Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
+              //Navigator.of(context).popUntil((route) => route.isFirst);
+              //Navigator.popUntil(context, ModalRoute.withName(''));
+              //Navigator.push(context, MaterialPageRoute(builder:(context)=>Login()));
             },
           ),
         ],

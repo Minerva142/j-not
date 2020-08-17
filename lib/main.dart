@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,7 @@ import 'screens/login_screen.dart';
 void main(){
   runApp(MyApp());
 }
-//yorum ile entegrasyomn kontrolü
+
 
 class MyApp extends StatelessWidget{
   @override
@@ -16,8 +15,9 @@ class MyApp extends StatelessWidget{
       theme: ThemeData(
         appBarTheme: AppBarTheme(
             brightness: Brightness.light, color: Colors.red),
+            brightness:     Brightness.light,
             primarySwatch: Colors.red,
-            canvasColor: Colors.cyan,
+        //colorScheme: ColorScheme(),buraya bak
       ),
       home: MyHomePage(),
     );
