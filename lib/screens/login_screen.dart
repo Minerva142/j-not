@@ -1,11 +1,10 @@
 import 'dart:math';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:odev/models/username.dart';
 
 import 'notification.dart';
 import 'package:flutter/material.dart';
 import 'package:odev/models/auth_handler.dart';
-//import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 
 class Login extends StatefulWidget{
@@ -18,10 +17,13 @@ class Login extends StatefulWidget{
 
 
 class _LoginState extends State<Login> {
+
+  final storage=new FlutterSecureStorage();
   List<Text> hatalar=[
     Text('Please Enter Your Username and Password',style: TextStyle(fontSize: 15,color: Colors.black87),),
     Text('Wrong Password or Username !!!',style: TextStyle(fontSize: 20,color: Colors.red),),
   ];
+
   int _cntr=0;
 
   void _incrctr(){
@@ -42,9 +44,12 @@ class _LoginState extends State<Login> {
     int r = min + rnd.nextInt(max - min);
     return r;
   }
+
   bool trigger=false;
+
   final username= TextEditingController();
   final password= TextEditingController();
+
 
   List<String> images=[
     'img/indir.png',
@@ -96,9 +101,6 @@ class _LoginState extends State<Login> {
                       hintText: 'x@x.com',
                       helperText: 'write your username.',
                       labelText: 'USERNAME',
-                      hasFloatingPlaceholder: false,
-                      //border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                      labelStyle: Theme.of(context).textTheme.title,
                   ),
                     keyboardType: TextInputType.emailAddress,
                   ),
@@ -116,9 +118,7 @@ class _LoginState extends State<Login> {
                     decoration: InputDecoration(
                       helperText: "Write your password.",
                       labelText: 'PASSWORD',
-                      hasFloatingPlaceholder: false,
                     icon: Icon(Icons.lock,color: Colors.red,),
-                    labelStyle: Theme.of(context).textTheme.title,
                       suffixIcon: Icon(
                         Icons.visibility,
                         color: Colors.red,
@@ -142,8 +142,8 @@ class _LoginState extends State<Login> {
                         if(value.success){
                           Navigator.push(context, MaterialPageRoute(
                               builder: (context) =>
-                                  Notifications(value.authorization))),
-                          username.clear(),
+                                  Notifications(value.authorization,username.text))),
+                          //username.clear(),
                           password.clear(),
                           _decctr(),
                         }

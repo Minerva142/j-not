@@ -13,7 +13,6 @@ class _settingsState extends State<settings> {
           Container(
             child: Text('Settings'),
           ),
-
         ],
     );
   }

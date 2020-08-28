@@ -1,13 +1,16 @@
-
 import 'package:flutter/material.dart';
 
 
 class Mydrawer extends StatefulWidget {
+  String username;
+  Mydrawer(this.username);
   @override
-  _MydrawerState createState() => _MydrawerState();
+  _MydrawerState createState() => _MydrawerState(this.username);
 }
 
 class _MydrawerState extends State<Mydrawer> {
+  String username;
+  _MydrawerState(this.username);
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -27,7 +30,7 @@ class _MydrawerState extends State<Mydrawer> {
                 style: TextStyle(color: Colors.red, fontSize: 15),
                 ),
                 Text(
-                "Eray Gönülal",
+                this.username,
                 style: TextStyle(color: Colors.red, fontSize: 25.0),
                 ),
               ],
