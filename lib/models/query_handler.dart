@@ -16,7 +16,7 @@ Future<listlogref> fetchref(String token,String username) async{
       'Auth-Token': productEncoded},
     body: jsonEncode({
       "jsonFormat": 1,
-      "querySqlText":"SELECT LOGICALREF FROM S_USERS WHERE USERNAME = 'admin'",
+      "querySqlText":"SELECT LOGICALREF FROM S_USERS WHERE USERNAME = username",
       "maxCount":-1
     }
     ),
